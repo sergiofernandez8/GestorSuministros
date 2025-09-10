@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Productos Disponibles</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/styleProduct.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/styleGeneral.css') }}?v=1">
+
+</head>
+<body class="d-flex flex-column min-vh-100 bg-light">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+    <!-- Logo -->
+
+    <img src="{{ url_for('static', filename='images/logoSfer_ProductManager_blanco.png') }}" alt="Logo" width="50" height="50" class="mb-1">
+    <a class="navbar-brand me-3" href="{{ url_for('ver_productos') }}"> PRODUCTOS </a>
+
+    <!-- Botón hamburguesa -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menú colapsable -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <!-- Productos al lado del dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('dashboard_cliente') }}">Dashboard Cliente</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ms-auto">
+            <!-- Cerrar sesión alineado a la derecha -->
+            <li class="nav-item">
+                <a class="nav-link text-danger" href="{{ url_for('logout') }}">Cerrar sesión</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Contenido -->
+<div class="container mt-4">
+    <h2 class="mb-4">Listado de Productos</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="alert alert-info">
+          {{ messages[0] }}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for p in productos %}
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                {% if p.imagen %}
+                <img src="{{ url_for('static', filename='images/' ~ p.imagen) }}"
+                    alt="{{ p.nombre }}"
+                    class="card-img-top p-3 bg-white"
+                    style="height: 220px; object-fit: contain; border-bottom: 1px solid #ddd;">
+                {% else %}
+                <div class="bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                    Sin imagen
+                </div>
+                {% endif %}
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title text-center">{{ p.nombre }}</h5>
+                    <p class="card-text small text-center">{{ p.descripcion }}</p>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item"><strong>Precio:</strong> {{ '%.2f' % p.precio }}€</li>
+                        <li class="list-group-item"><strong>Stock:</strong> {{ p.cantidad_en_stock }}</li>
+                        <li class="list-group-item"><strong>Ubicación:</strong> {{ p.ubicacion }}</li>
+                        <li class="list-group-item"><strong>Color:</strong> {{ p.color }}</li>
+                    </ul>
+                    <a href="{{ url_for('comprar_producto', id_producto=p.id_producto) }}" class="btn btn-comprar mt-auto">
+                        Comprar
+                    </a>
+
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p class="text-center">No hay productos disponibles.</p>
+        {% endfor %}
+    </div>
+
+    <div class="mt-4">
+        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Volver al Dashboard</a>
+    </div>
+
+    <div>
+        <br>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white mt-auto pt-4">
+  <div class="container">
+    <div class="row justify-content-between align-items-center">
+      <div class="col-md-6 mb-3 mb-md-0">
+        <h5 class="text-uppercase fw-bold">SFER & PRODUCTMANAGER</h5>
+        <p class="mb-0">Plataforma premium para la gestión inteligente de productos y proveedores.</p>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <p class="mb-1">Contacto: <a href="mailto:sferproductmanager@gmail.com" class="text-white">sferproductmanager@gmail.com</a>
+        </p>
+        <a href="https://www.linkedin.com/in/sergio-fernández-lópez-8784bb270" target="_blank" class="text-white me-3 text-decoration-none">
+          <i class="bi bi-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://www.instagram.com/sfer_productmanager?igsh=MWp5aWZ3bGhtcmx0Zw%3D%3D" target="_blank" class="text-white text-decoration-none">
+          <i class="bi bi-instagram"></i> Instagram
+        </a>
+      </div>
+    </div>
+    <hr class="bg-light my-3">
+    <div class="text-center text-secondary small pb-3">
+      © {{ current_year if current_year else 2025 }} Sfer & ProductManager · Todos los derechos reservados
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

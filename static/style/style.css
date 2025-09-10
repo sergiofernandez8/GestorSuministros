@@ -1,0 +1,83 @@
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .login-container {
+            max-width: 400px;
+            background: #ffffffcc; /* blanco con transparencia */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            position: relative;
+    z-index: 10;
+        }
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(-45deg, #1e3c72, #2a5298, #0f2027, #00c6ff);
+    background-size: 400% 400%;
+    animation: fondo 20s ease infinite;
+    overflow: hidden;
+    height: 100vh;
+    font-family: sans-serif;
+}
+
+@keyframes fondo {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.contenedor-productos {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.producto {
+    position: absolute;
+    bottom: -5%;
+    font-size: 2rem;
+    opacity: 0.5;
+    animation: flotar 15s linear infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.6));
+    pointer-events: none;
+}
+
+
+@keyframes flotar {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Animación con diferente velocidad */
+.producto:nth-child(1) { animation-delay: 0s; animation-duration: 12s; }
+.producto:nth-child(2) { animation-delay: 1s; animation-duration: 10s; }
+.producto:nth-child(3) { animation-delay: 2s; animation-duration: 14s; }
+.producto:nth-child(4) { animation-delay: 3s; animation-duration: 11s; }
+.producto:nth-child(5) { animation-delay: 4s; animation-duration: 13s; }
+.producto:nth-child(6) { animation-delay: 5s; animation-duration: 9s; }
+.producto:nth-child(7) { animation-delay: 6s; animation-duration: 15s; }
+.producto:nth-child(8) { animation-delay: 7s; animation-duration: 10s; }
+.producto:nth-child(9) { animation-delay: 8s; animation-duration: 13s; }
+.producto:nth-child(10) { animation-delay: 9s; animation-duration: 12s; }
+
+
+

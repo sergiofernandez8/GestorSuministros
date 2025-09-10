@@ -1,0 +1,56 @@
+.btn-comprar {
+    background: linear-gradient(90deg, #ff7e5f, #feb47b); /* Coral -> Naranja dorado */
+    color: white;
+    border: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.btn-comprar:hover {
+    background: linear-gradient(90deg, #ff6a5b, #ffa756); /* Más intenso al hacer hover */
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+/* Fondo suave con degradado */
+body {
+    background: linear-gradient(180deg, #f9fafb, #ffffff);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Tarjetas de productos */
+.card {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: none;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Título del producto */
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1e1e2f;
+}
+
+/* Lista de detalles */
+.list-group-item {
+    border: none;
+    background-color: #f3f4f6;
+    font-size: 0.9rem;
+}
+
+/* Botón "Volver al Dashboard" */
+.btn-secondary {
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 8px 20px;
+}
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+
+</head>
+<body>
+
+<div class="container">
+    <div class="login-container mx-auto">
+        <img src="{{ url_for('static', filename='images/Logo&Fondo.png') }}" alt="Logo" class="img-fluid mx-auto d-block mb-3" style="max-width: 150px;">
+        <h3 class="text-center mb-4">Iniciar Sesión</h3>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert alert-danger" role="alert">
+              {{ messages[0] }}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <div class="mb-3">
+                <label class="form-label">Correo</label>
+                <input type="email" class="form-control" name="correo" placeholder="Correo electrónico" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Contraseña</label>
+                <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Entrar</button>
+                <a href="{{ url_for('register') }}" class="btn btn-outline-secondary">Registrarse</a>
+            </div>
+        </form>
+    </div>
+</div>
+    <div class="contenedor-productos">
+        <!-- Aquí se insertarán los productos flotantes -->
+        <div class="producto" style="left: 10%;">📦</div>
+        <div class="producto" style="left: 20%;">🛒</div>
+        <div class="producto" style="left: 30%;">🛍️</div>
+        <div class="producto" style="left: 40%;">📁</div>
+        <div class="producto" style="left: 50%;">🖥️</div>
+        <div class="producto" style="left: 60%;">📦</div>
+        <div class="producto" style="left: 70%;">📊</div>
+        <div class="producto" style="left: 80%;">🛒</div>
+        <div class="producto" style="left: 90%;">📁</div>
+        <div class="producto" style="left: 95%;">📦</div>
+        <!-- Puedes duplicar más para que sea aún más denso -->
+    </div>
+</body>
+</html>

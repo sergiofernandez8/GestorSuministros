@@ -1,0 +1,17 @@
+
+.btn-comprar {
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    color: white;
+    border: none;
+    font-weight: bold;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-comprar:hover {
+    background: linear-gradient(90deg, #2563eb, #3b82f6);
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: white;
+}

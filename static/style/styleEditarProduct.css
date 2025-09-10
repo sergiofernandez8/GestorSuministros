@@ -1,0 +1,17 @@
+form input, form textarea {
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+}
+
+form label {
+    color: #000;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+}
