@@ -16,7 +16,7 @@ from werkzeug.security import check_password_hash
 configure_mappers()
 
 app = Flask(__name__)
-app.secret_key = "clave_segura"  # Cámbiala en producción
+app.secret_key = os.environ.get("SECRET_KEY", "clave_por_defecto")
 
 # 🔧 Añadido para solucionar el KeyError
 app.config['UPLOAD_FOLDER'] = os.path.join('static', 'images')
@@ -381,4 +381,6 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
